@@ -1,0 +1,32 @@
+#默认使用配置
+spring:
+  profiles:
+    active: dev
+
+#公共配置与profiles选择无关
+mybatis:
+  typeAliasesPackage: com.demo.spdemo.entity
+  mapperLocations: classpath:sqlMap/*.xml
+
+
+---
+
+#开发配置
+spring:
+  profiles: dev
+
+  datasource:
+    url: jdbc:mysql://localhost:3306/Demo
+    username: root
+    password: 123456
+    driver-class-name: com.mysql.jdbc.Driver
+    # 使用druid数据源
+    type: com.alibaba.druid.pool.DruidDataSource
+
+
+    #thymeleaf:
+     # prefix: classpath:/templates/
+# 一项是非严格的HTML检查，一项是禁用缓存来获取实时页面数据，其他采用默认项即可
+  thymeleaf:
+    mode: LEGACYHTML5
+    cache: false
